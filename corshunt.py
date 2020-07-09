@@ -50,7 +50,7 @@ def advance_hunt():
 def final_exploit(is_empty,url):
    # print(is_empty)
     if is_empty:
-        print(url,"-> Not Vulnerable to CORS")
+        print(url,"-> Not Vulnerable to CORS...")
     else:
         print(url,"Vulnerable to CORS")
 
