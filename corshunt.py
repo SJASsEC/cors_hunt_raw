@@ -2,7 +2,7 @@ import requests
 from requests.exceptions import HTTPError
 
 def get_urls():    
-    file = open(r'CORS_Hunter\urls.txt', "r")
+    file = open(r'urls.txt', "r")
     if file.mode == "r":
         contents = file.readlines()
     return contents
