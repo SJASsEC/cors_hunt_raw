@@ -33,14 +33,26 @@ def advance_hunt():
         try:
             response= requests.post(url,headers=headers)
             if (response.status_code == 200):
-                header = response.headers
-            res = dict( filter(lambda item: header_keys in item[0], header.items()))
-            print("URL:", url, "Header:", res.keys())
+                header = response.headers  
+            
+            res = dict(
+                filter(lambda item: header_keys in item[0], header.items()))
+            # headers containting Access-Control-Allow
+            is_empty = not res #if true dictionary is empty
+            final_exploit(is_empty,url)
+
+            #print("URL:", url, "Header:", res.keys())
         except HTTPError as http_err:
             print(f'HTTP Error:{http_err}')
         except Exception as err:
             print(f'Other error:{err}')
 
+def final_exploit(is_empty,url):
+   # print(is_empty)
+    if is_empty:
+        print(url,"-> Not Vulnerable to CORS")
+    else:
+        print(url,"Vulnerable to CORS")
 
 def main():
     get_urls()
